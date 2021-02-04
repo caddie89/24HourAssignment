@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _24HourAssignment.Data
 {
-    class Post
+    public class Post
     {
     }
 }
