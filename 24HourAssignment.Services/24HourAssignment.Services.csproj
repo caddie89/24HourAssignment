@@ -60,5 +60,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\24HourAssignment.Data\24HourAssignment.Data.csproj">
+      <Project>{188231bb-68c2-4312-8fa3-7a5c42313e2a}</Project>
+      <Name>24HourAssignment.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\24HourAssignment.Models\24HourAssignment.Models.csproj">
+      <Project>{74f73133-c797-4291-9e5c-a5912d77d5c0}</Project>
+      <Name>24HourAssignment.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
