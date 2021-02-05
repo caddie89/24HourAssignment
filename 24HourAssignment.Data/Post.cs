@@ -10,6 +10,10 @@ namespace _24HourAssignment.Data
     {
         //Develop comment
 
+<<<<<<< HEAD
         //caleb comment
+=======
+        //comment (joshua)
+>>>>>>> 9fbb47344e14bb153daf4a110eb9baa6ad5aa15f
     }
 }
