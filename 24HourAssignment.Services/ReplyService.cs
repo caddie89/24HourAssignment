@@ -63,5 +63,19 @@ namespace _24HourAssignment.Services
             }
         }
 
+        //4.08 GetRepliesByCommentId
+        public ReplyDetail GetRepliesByCommentId(int CommentId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Replies
+                    .Single(e => e.ReplyId == Id && e.AuthorId == _userId);
+            }
+        }
+
+
+
     }
 }

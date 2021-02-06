@@ -42,5 +42,20 @@ namespace _24HourAssignment.WebAPI.Controllers
             return replyService;
         }
 
+        /// <summary>
+        /// 4.08
+        /// </summary>
+        /// <param name="CommentId"></param>
+        /// <returns></returns>
+        public IHttpActionResult GetRepliesByCommentId(int CommentId)
+        {
+            ReplyService replyService = CreateReplyService();
+            var reply = replyService.GetCommentById(CommentId);
+            return Ok(reply);
+        }
+
+
+        //After We have the Comment (and maybe Post) classes/services in the local, we can find replies for a specific Comment, which is attached to a specific Post.  Pick up at 4.06 after pulling Caleb/Jon's classes/services/etc
+
     }
 }
