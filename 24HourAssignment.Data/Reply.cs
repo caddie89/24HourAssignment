@@ -11,7 +11,7 @@ namespace _24HourAssignment.Data
     public class Reply
     {
         [Key]
-        public int ReplyId { get; set; }
+        public Guid ReplyId { get; set; }
 
         [ForeignKey(nameof(Comment))]
         public int CommentId { get; set; }
@@ -22,5 +22,8 @@ namespace _24HourAssignment.Data
 
         [Required]
         public Guid Author { get; set; }
+
+        [Required]
+        public DateTimeOffset CreatedUtc { get; set; }
     }
 }
