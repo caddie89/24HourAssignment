@@ -23,7 +23,7 @@ namespace _24HourAssignment.Data
         [Required]
         public Guid Author { get; set; }
 
-        [Required]
-        public DateTimeOffset CreatedUtc { get; set; }
+        //[Required]
+        //public DateTimeOffset CreatedUtc { get; set; }
     }
 }

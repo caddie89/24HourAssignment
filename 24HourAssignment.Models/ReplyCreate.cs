@@ -12,5 +12,8 @@ namespace _24HourAssignment.Models
         [Required]
         [MaxLength(200, ErrorMessage = "You have exceed the maximum number of characters allowed (200).")]
         public string ReplyText { get; set; }
+
+        [Required]
+        public int CommentId { get; set; }
     }
 }

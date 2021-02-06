@@ -1,5 +1,6 @@
 ﻿using _24HourAssignment.Models;
 using _24HourAssignment.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,14 +32,14 @@ namespace _24HourAssignment.WebAPI.Controllers
             if (!service.CreateReply(reply))
                 return InternalServerError();
 
-            return Ok;
+            return Ok();
         }
 
 
         private ReplyService CreateReplyService()
         {
-            var userId = Guid.Parse(User.Identity.GetCommentId());
-            var replyService = new ReplyService(commentId);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var replyService = new ReplyService(userId);
             return replyService;
         }
 
@@ -47,12 +48,12 @@ namespace _24HourAssignment.WebAPI.Controllers
         /// </summary>
         /// <param name="CommentId"></param>
         /// <returns></returns>
-        public IHttpActionResult GetRepliesByCommentId(int CommentId)
-        {
-            ReplyService replyService = CreateReplyService();
-            var reply = replyService.GetCommentById(CommentId);
-            return Ok(reply);
-        }
+        //public IHttpActionResult GetRepliesByCommentId(int CommentId)
+        //{
+        //    ReplyService replyService = CreateReplyService();
+        //    var reply = replyService.GetCommentById(CommentId);
+        //    return Ok(reply);
+        //}
 
 
         //After We have the Comment (and maybe Post) classes/services in the local, we can find replies for a specific Comment, which is attached to a specific Post.  Pick up at 4.06 after pulling Caleb/Jon's classes/services/etc

@@ -14,7 +14,7 @@ namespace _24HourAssignment.Models
         [Required]
         public string ReplyText { get; set; }
         [Required]
-        public Guid Author { get; set }
+        public Guid Author { get; set; }
 
         //virtual list of replies? (from prompt)
 

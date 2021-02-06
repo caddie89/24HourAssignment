@@ -33,12 +33,12 @@ namespace _24HourAssignment.WebAPI.Controllers
             return Ok();
         }
 
-        public IHttpActionResult Get(int id)
-        {
-            CommentService commentService = CreateCommentService();
-            var comment = commentService.GetCommentById(id);
-            return Ok(comment);
-        }
+        //public IHttpActionResult Get(int id)
+        //{
+        //    CommentService commentService = CreateCommentService();
+        //    var comment = commentService.GetCommentById(id);
+        //    return Ok(comment);
+        //}
 
         private CommentService CreateCommentService()
         {

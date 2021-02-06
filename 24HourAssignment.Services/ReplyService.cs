@@ -9,19 +9,13 @@ using System.Threading.Tasks;
 namespace _24HourAssignment.Services
 {
 
-    /// <summary>
-    /// //////////////4.02
-    /// </summary>
-
-
-
     public class ReplyService
     {
-        private readonly Guid _commentId;
+        private readonly Guid _userId;
 
-        public ReplyService(int commentId)
+        public ReplyService(Guid userId)
         {
-            _commentId = CommentId;
+            _userId = userId;
         }
 
 
@@ -31,9 +25,10 @@ namespace _24HourAssignment.Services
             var entity =
                 new Reply()
                 {
-                    ReplyId = _commentId,
+                    Author = _userId,
+                    CommentId = model.CommentId,
                     ReplyText = model.ReplyText,
-                    CreatedUtc = DateTimeOffset.Now
+                    
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -50,38 +45,37 @@ namespace _24HourAssignment.Services
             {
                 var query =
                     ctx.Replies
-                    .Where(e => e.CommentId == _commentId)
+                    .Where(e => e.Author == _userId)
                     .Select(
                         e => new ReplyListItem
                         {
                             ReplyId = e.ReplyId,
-                            ReplyText = e.ReplyText,
-                            CreatedUtc = e.CreatedUtc
+                            ReplyText = e.ReplyText
                         }
                   );
                 return query.ToArray();
             }
         }
 
-        //4.08 GetRepliesByCommentId
-        public ReplyDetail GetRepliesByCommentId(int CommentId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                    .Replies
-                    .Single(e => e.ReplyId == Id && e.AuthorId == _userId);
-                return
-                    new ReplyDetail
-                    {
-                        ReplyId = entity.ReplyId,
-                        ReplyText = entity.ReplyText,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
-                    };
-            }
-        }
+        ////4.08 GetRepliesByCommentId
+        //public ReplyDetail GetRepliesByCommentId(int CommentId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //            .Replies
+        //            .Single(e => e.ReplyId == Id && e.AuthorId == _userId);
+        //        return
+        //            new ReplyDetail
+        //            {
+        //                ReplyId = entity.ReplyId,
+        //                ReplyText = entity.ReplyText,
+        //                CreatedUtc = entity.CreatedUtc,
+        //                ModifiedUtc = entity.ModifiedUtc
+        //            };
+        //    }
+        //}
 
 
 
