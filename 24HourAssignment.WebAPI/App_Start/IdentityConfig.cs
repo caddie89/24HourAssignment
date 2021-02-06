@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
 using _24HourAssignment.Data;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace _24HourAssignment.WebAPI
 {
