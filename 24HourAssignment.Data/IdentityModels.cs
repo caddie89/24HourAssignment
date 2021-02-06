@@ -26,8 +26,9 @@ namespace _24HourAssignment.Data
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
