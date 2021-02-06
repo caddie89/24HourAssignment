@@ -1,27 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _24HourAssignment.Data
 {
-    public class Post
+    public class Reply
     {
         [Key]
-        public int PostId { get; set; }
+        public int ReplyId { get; set; }
+
+        [ForeignKey(nameof(Comment))]
+        public int CommentId { get; set; }
+        public virtual Comment Comment { get; set; }
 
         [Required]
-        public string PostTitle { get; set; }
-
-        [Required]
-        public string PostText { get; set; }
+        public string ReplyText { get; set; }
 
         [Required]
         public Guid Author { get; set; }
-
-        public virtual List<Comment> CommentList { get; set; } = new List<Comment>();
-
     }
 }
