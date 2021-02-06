@@ -25,7 +25,7 @@ namespace _24HourAssignment.Data
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            this.Configuration.ProxyCreationEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;   //this turns off lazy loading, which was causing Caleb's proxy issues (error message something about the object failing to serialize, referencing blah blah something proxies, and the author)
         }
 
         public static ApplicationDbContext Create()
