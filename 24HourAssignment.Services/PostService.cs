@@ -61,5 +61,57 @@ namespace _24HourAssignment.Services
                 return query.ToArray();
             }
         }
+        // GET by ID
+        public PostDetail GetPostById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Posts
+                    .Include(m => m.CommentList)
+                    .Single(e => e.PostId == id && e.Author == _userId);
+                return
+                    new PostDetail
+                    {
+                        Author = entity.Author,
+                        PostId = entity.PostId,
+                        PostTitle = entity.PostTitle,
+                        PostText = entity.PostText,
+                        CommentList = entity.CommentList
+                    };
+            }
+        }
+        // PUT
+        public bool UpdatePost(PostEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Posts
+                    .Single(e => e.PostId == model.PostId && e.Author == _userId);
+
+                entity.PostTitle = model.PostTitle;
+                entity.PostText = model.PostText;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        // DELETE
+        public bool DeletePost(int postId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Posts
+                    .Single(e => e.PostId == postId && e.Author == _userId);
+
+                ctx.Posts.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

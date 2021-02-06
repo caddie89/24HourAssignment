@@ -45,6 +45,8 @@ namespace _24HourAssignment.Data
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())
                 .Add(new IdentityUserRoleConfiguration());
+
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
         }
 
         public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
