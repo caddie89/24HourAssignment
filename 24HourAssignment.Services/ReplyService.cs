@@ -72,6 +72,14 @@ namespace _24HourAssignment.Services
                     ctx
                     .Replies
                     .Single(e => e.ReplyId == Id && e.AuthorId == _userId);
+                return
+                    new ReplyDetail
+                    {
+                        ReplyId = entity.ReplyId,
+                        ReplyText = entity.ReplyText,
+                        CreatedUtc = entity.CreatedUtc,
+                        ModifiedUtc = entity.ModifiedUtc
+                    };
             }
         }
 
